@@ -50,3 +50,15 @@ console.log("19" - "13" + "17"); // -> number
 console.log("19" - "13" + 17); // -> number
 console.log("123" < 57); // -> boolean
 console.log(5 + 6 + "4" + 9 - 4 - 2); // -> number
+
+const neighbourCountries = Number(
+  prompt("How many neighbour countries does your country have?")
+);
+
+if (neighbourCountries === 1) {
+  console.log("Only 1 border!");
+} else if (neighbourCountries > 1) {
+  console.log("More than 1 border!");
+} else {
+  console.log("No neighbours!");
+}

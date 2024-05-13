@@ -123,7 +123,7 @@ console.log("23" - "10" - 3); //number
 console.log("23" / "2"); //number
 console.log("23" + "10" + 3); //string */
 
-console.log(Boolean(0));
+/*console.log(Boolean(0));
 console.log(Boolean(undefined));
 console.log(Boolean("Jonas"));
 console.log(Boolean({}));
@@ -141,4 +141,23 @@ if (height) {
   console.log("Yay height is defined!");
 } else {
   conso9le.log("Height is undefined");
+} */
+
+//Equality operators
+/*const age = "18";
+if (age === 18) console.log("You just became an adult! (strict)");
+if (age == 18) console.log("You just became an adult (loose)!");
+const favourite = Number(prompt("What is yout favourite number?"));
+console.log(typeof favourite);
+
+if (favourite === 23) {
+  console.log("Cool 23 is an amazing number");
+} else if (favourite === 7) {
+  console.log("7 is also an amazing number");
+} else if (favourite === 9) {
+  console.log("9 is also an amazing number");
+} else {
+  console.log("Number not 23 nor 7 nor 9");
 }
+
+if (favourite !== 23) console.log("Why not 23?"); */
