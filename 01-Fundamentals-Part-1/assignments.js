@@ -1,13 +1,13 @@
-let country = "Sweden";
+/* let country = "Sweden";
 let continent = "Europe";
-let language = "Swedish";
+let language = "English";
 let population = 10.5;
 
 console.log(country);
 console.log(continent);
 console.log(population);
 
-let isIsland = true;
+let isIsland = false;
 console.log(typeof country);
 console.log(typeof population);
 console.log(typeof isIsland);
@@ -45,20 +45,26 @@ if (population > 33) {
   );
 }
 
-console.log("9" - "5"); // -> number
-console.log("19" - "13" + "17"); // -> number
-console.log("19" - "13" + 17); // -> number
-console.log("123" < 57); // -> boolean
-console.log(5 + 6 + "4" + 9 - 4 - 2); // -> number
+// console.log("9" - "5"); // -> number
+// console.log("19" - "13" + "17"); // -> number
+// console.log("19" - "13" + 17); // -> number
+// console.log("123" < 57); // -> boolean
+// console.log(5 + 6 + "4" + 9 - 4 - 2); // -> number
 
-const neighbourCountries = Number(
-  prompt("How many neighbour countries does your country have?")
-);
+// const neighbourCountries = Number(
+//   prompt("How many neighbour countries does your country have?")
+// );
 
-if (neighbourCountries === 1) {
-  console.log("Only 1 border!");
-} else if (neighbourCountries > 1) {
-  console.log("More than 1 border!");
+// if (neighbourCountries === 1) {
+//   console.log("Only 1 border!");
+// } else if (neighbourCountries > 1) {
+//   console.log("More than 1 border!");
+// } else {
+//   console.log("No neighbours!");
+// }
+
+if (language === "English" && population < 50 && !isIsland) {
+  console.log(`You should live in ${country} :)`);
 } else {
-  console.log("No neighbours!");
-}
+  console.log(`${country} does not meet your criteria :(`);
+} */
