@@ -1,4 +1,4 @@
-let country = "Sweden";
+/* let country = "Sweden";
 let continent = "Europe";
 let language = "English";
 let population = 10.5;
@@ -88,4 +88,4 @@ switch (language) {
     break;
   default:
     console.log("Great language too :D");
-}
+} */
