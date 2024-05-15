@@ -89,3 +89,40 @@ switch (language) {
   default:
     console.log("Great language too :D");
 } */
+
+function describeCountry(country, population, capitalCity) {
+  const countryDescription = `${country} has ${population} million people and its capital city is ${capitalCity}`;
+  return countryDescription;
+}
+
+const finlandDescription = describeCountry("Finland", 6, "Helsinki");
+const swedenDescription = describeCountry("Sweden", 10.5, "Stockholm");
+const norwayDescription = describeCountry("Norway", 5.5, "Oslo");
+
+console.log(finlandDescription);
+console.log(swedenDescription);
+console.log(norwayDescription);
+
+function percentageOfWorld1(population) {
+  const percentagePopulation = (population / 7900) * 100;
+  return percentagePopulation;
+}
+
+const finlandPercentage1 = percentageOfWorld1(6);
+console.log(finlandPercentage1);
+const swedenPercentage1 = percentageOfWorld1(10.5);
+console.log(swedenPercentage1);
+const norwayPercentage1 = percentageOfWorld1(5.5);
+console.log(norwayPercentage1);
+
+const percentageOfWorld2 = function (population) {
+  const percentagePopulation = (population / 7900) * 100;
+  return percentagePopulation;
+};
+
+const finlandPercentage2 = percentageOfWorld2(6);
+console.log(finlandPercentage2);
+const swedenPercentage2 = percentageOfWorld2(10.5);
+console.log(swedenPercentage2);
+const norwayPercentage2 = percentageOfWorld2(5.5);
+console.log(norwayPercentage2);
