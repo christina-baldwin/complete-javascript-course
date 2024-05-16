@@ -90,7 +90,7 @@ switch (language) {
     console.log("Great language too :D");
 } */
 
-function describeCountry(country, population, capitalCity) {
+/* function describeCountry(country, population, capitalCity) {
   const countryDescription = `${country} has ${population} million people and its capital city is ${capitalCity}`;
   return countryDescription;
 }
@@ -125,4 +125,4 @@ console.log(finlandPercentage2);
 const swedenPercentage2 = percentageOfWorld2(10.5);
 console.log(swedenPercentage2);
 const norwayPercentage2 = percentageOfWorld2(5.5);
-console.log(norwayPercentage2);
+console.log(norwayPercentage2); */
