@@ -126,3 +126,17 @@ const swedenPercentage2 = percentageOfWorld2(10.5);
 console.log(swedenPercentage2);
 const norwayPercentage2 = percentageOfWorld2(5.5);
 console.log(norwayPercentage2); */
+
+const percentageOfWorld3 = (population) => (population / 7900) * 100;
+const finlandPercentage3 = percentageOfWorld3(6);
+console.log(finlandPercentage3);
+
+function describePopulation(country, population) {
+  const countryPercentage = percentageOfWorld3(population);
+  console.log(
+    `${country} has ${population} million people, whcih is about ${countryPercentage}% of the world`
+  );
+}
+
+const describeFinland = describePopulation("Finland", 6);
+console.log(describeFinland);
