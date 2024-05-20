@@ -127,7 +127,7 @@ console.log(swedenPercentage2);
 const norwayPercentage2 = percentageOfWorld2(5.5);
 console.log(norwayPercentage2); */
 
-const percentageOfWorld3 = (population) => (population / 7900) * 100;
+/*const percentageOfWorld3 = (population) => (population / 7900) * 100;
 const finlandPercentage3 = percentageOfWorld3(6);
 console.log(finlandPercentage3);
 
@@ -139,4 +139,33 @@ function describePopulation(country, population) {
 }
 
 const describeFinland = describePopulation("Finland", 6);
-console.log(describeFinland);
+console.log(describeFinland); */
+
+const populations = [6, 10.5, 5.5, 0.3];
+console.log(populations.length === 4);
+
+function percentageOfWorld1(population) {
+  const percentagePopulation = (population / 7900) * 100;
+  return percentagePopulation;
+}
+
+const percentages = [
+  percentageOfWorld1(populations[0]),
+  percentageOfWorld1(populations[1]),
+  percentageOfWorld1(populations[2]),
+  percentageOfWorld1(populations[3]),
+];
+
+console.log(percentages);
+
+const neighbours = ["Finland", "Norway", "Iceland"];
+neighbours.push("Utopia");
+neighbours.pop();
+
+if (!neighbours.includes("Germany")) {
+  console.log("Probably not a central european country :D");
+}
+
+console.log(neighbours.indexOf("Finland"));
+neighbours[0] = "Republic of Finland";
+console.log(neighbours);
