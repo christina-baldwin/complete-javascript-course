@@ -141,7 +141,7 @@ function describePopulation(country, population) {
 const describeFinland = describePopulation("Finland", 6);
 console.log(describeFinland); */
 
-const populations = [6, 10.5, 5.5, 0.3];
+/* const populations = [6, 10.5, 5.5, 0.3];
 console.log(populations.length === 4);
 
 function percentageOfWorld1(population) {
@@ -168,4 +168,4 @@ if (!neighbours.includes("Germany")) {
 
 console.log(neighbours.indexOf("Finland"));
 neighbours[0] = "Republic of Finland";
-console.log(neighbours);
+console.log(neighbours); */
