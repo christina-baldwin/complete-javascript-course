@@ -129,7 +129,7 @@ if (friends.includes("Steven")) {
 
 //OBJECTS
 // Object literal syntax
-const jonas = {
+/* const jonas = {
   firstName: "Jonas",
   lastName: "Schmedtman",
   age: 2037 - 1991,
@@ -165,4 +165,33 @@ console.log(jonas);
 
 console.log(
   `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}`
-);
+); */
+
+// Object Methods
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtman",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function () {
+  //   return 2037 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+  },
+};
+
+console.log(jonas.calcAge());
+console.log(jonas.age);
+console.log(jonas.getSummary());
