@@ -82,3 +82,11 @@ function hasExamplesInJava(book) {
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent && console.log(`"${title}" provides online content`);
 }; */
+
+////////////////////////////////
+// NULLISH COALESCING OPERATOR
+// 6.1
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ??
+    console.log(`"${title}" provides no data about its online content`);
+}

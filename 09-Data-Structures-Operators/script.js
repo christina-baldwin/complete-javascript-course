@@ -203,7 +203,7 @@ add(...x); //unpack the values then will be repacked in the function in the numb
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms'); */
 
-///////////////////////////////
+/*///////////////////////////////
 // SHORT CIRCUITING (&& AND ||)
 // using the or operator
 console.log(3 || 'Jonas');
@@ -228,4 +228,14 @@ if (restaurant.orderPizza) {
   restaurant.orderPizza('mushrooms', 'spinach');
 }
 // doing as above but with short-circuiting
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach'); */
+
+////////////////////////////////////
+// NULLISH COALESCING OPERATOR (??)
+// fixing the issue with using 0 as a value and it coming up as falsy
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
