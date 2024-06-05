@@ -41,47 +41,13 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be deliverd to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+    );
+  },
 };
-
-// practical application (see function above, used destructuring in the original function using curly brackets and used defaults)
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via Del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-});
-
-restaurant.orderDelivery({
-  address: 'Via Del Sole, 21',
-  starterIndex: 1,
-});
-
-// DESTRUCTURING OBJECTS
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
-// changing names
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
-// default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
-
-// mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
-
-// nested objects
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
 
 /*/////////////////////////
 // DESTRUCTURING ARRAYS
@@ -119,3 +85,79 @@ console.log(i, j, k);
 // Default values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r); // without default values, r is equal to undefined */
+
+/*// DESTRUCTURING OBJECTS
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+// changing names
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+
+// nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c); 
+
+// practical application (see function above, used destructuring in the original function using curly brackets and used defaults)
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via Del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: 'Via Del Sole, 21',
+  starterIndex: 1,
+});*/
+
+/*//////////////////////
+// THE SPEAD OPERATOR
+const arr = [7, 8, 9];
+// if you want to add this array to a new array the bad way
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+// better way with spread
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+// example: create a new menu
+const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
+console.log(newMenu);
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+// join 2 arrays (main menu and starter menu)
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+// spread with strings
+const str = 'Jonas';
+const letters = [...str, '', 'S.'];
+console.log(letters);
+//console.log(`${...str} Schmedtman`); this does not work as a template literal does not expect values separated by a comma
+// example: using the new function orderPasta which takes the ingredients by spreading the ingredients asked for in a prompt
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+restaurant.orderPasta(...ingredients);
+// objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy); */

@@ -1,4 +1,4 @@
-// DESTRUCTURING ARRAYS
+/*// DESTRUCTURING ARRAYS
 // 1.1
 const books = ['salemsLot', 'dracula', 'dune'];
 const [firstBook, secondBook] = books;
@@ -46,4 +46,10 @@ printBookInfo({
 });
 function printBookInfo({ title, author, year = 'year unknown' }) {
   console.log(`${title} by ${author}, ${year}`);
-}
+}; */
+
+/*// THE SPREAD OPERATOR
+const bookAuthors = [...books[0].author, ...books[1].author];
+function spellWord(word) {
+  console.log(...word);
+}; */
