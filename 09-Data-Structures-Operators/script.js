@@ -230,7 +230,7 @@ if (restaurant.orderPizza) {
 // doing as above but with short-circuiting
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach'); */
 
-////////////////////////////////////
+/*////////////////////////////////////
 // NULLISH COALESCING OPERATOR (??)
 // fixing the issue with using 0 as a value and it coming up as falsy
 restaurant.numGuests = 0;
@@ -238,4 +238,110 @@ const guests = restaurant.numGuests || 10;
 console.log(guests);
 
 const guestsCorrect = restaurant.numGuests ?? 10;
-console.log(guestsCorrect);
+console.log(guestsCorrect); */
+
+/*////////////////////////////////
+// LOGICAL ASSIGNMENT OPERATORS
+const rest1 = {
+  name: 'Capri',
+  numGuests: 0,
+};
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+// if numGuests exists return numGuests if not default numGuests to 10
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest1.numGuests || 10;
+// this way it returns 0 and "" as falsy
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// nullish assignment operator (only null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// replace owner name with anonymous
+rest1.owner = rest1.owner && 'Anonymous';
+rest2.owner = rest2.owner && 'Anonymous';
+// using logical and assignment
+rest1.owner &&= 'Anonymous';
+rest2.owner &&= 'Anonymous';
+
+console.log(rest1);
+console.log(rest2); */
+
+/*////////////////////
+// CODING CHALLENGE #1: FOOTBALL BETTING APP
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+// 1.
+// const players1 = [...game.players[0]];
+// const players2 = [...game.players[1]];
+const [players1, players2] = game.players;
+console.log(players1, players2);
+// 2.
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+// 3.
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+// 4.
+const playersFinal = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(playersFinal);
+// 5.
+const {
+  odds: { team1: team1, x: draw, team2: team2 },
+} = game;
+console.log(team1, draw, team2);
+// 6.
+const printGoals = function (...playerNames) {
+  console.log(`Goals scored by: ${playerNames}`);
+  console.log(`${playerNames.length} goals were scored`);
+};
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+printGoals(...game.scored);
+//  7.
+console.log(
+  (game.odds.team1 < game.odds.team2 &&
+    `Team 1 is more likely to win than team 2`) ||
+    (game.odds.team2 < game.odds.team1 &&
+      `Team 2 is more likely to win than team 1`)
+); */
