@@ -202,3 +202,30 @@ add(...x); //unpack the values then will be repacked in the function in the numb
 // makes 2 arrays: 1 for the main ingredient and another with the other ingredients
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms'); */
+
+///////////////////////////////
+// SHORT CIRCUITING (&& AND ||)
+// using the or operator
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// example: check if numGuests exists
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+// doing the same thing as above but using short-circuiting
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+// this is a problem when the value is zero, will return the default as 0 is a falsy value but we dont want this as 0 is a real amount
+
+// using the and operator
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+console.log('Hello' && 23 && null && 'Jonas');
+// example: check if orderPizza exisits
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+// doing as above but with short-circuiting
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');

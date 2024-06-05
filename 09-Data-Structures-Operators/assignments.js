@@ -71,3 +71,14 @@ function printBookAuthorsCount(title, ...authors) {
   console.log(`The book "${title}" has ${authors.length} authors`);
 }
 printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne'); */
+
+/*//////////////////////
+// SHORT CIRCUITING
+// 5.1
+function hasExamplesInJava(book) {
+  return book.programmingLanguage === 'Java' || 'no data available';
+}
+// 5.2
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent && console.log(`"${title}" provides online content`);
+}; */
