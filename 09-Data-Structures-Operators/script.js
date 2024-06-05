@@ -47,6 +47,11 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 /*/////////////////////////
@@ -86,6 +91,7 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r); // without default values, r is equal to undefined */
 
+////////////////////////////
 /*// DESTRUCTURING OBJECTS
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -161,3 +167,38 @@ console.log(newRestaurant);
 const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy); */
+
+/*////////////////////
+// REST PATTERN
+// 1. destructuring
+// spread because left side of =
+const arr = [1, 2, ...[3, 4]];
+// rest becuase right side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+//this separtes the first two into "a" and "b" and the rest into "others"
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza.risotto, otherFood);
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+// 2. functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x); //unpack the values then will be repacked in the function in the numbers array
+// example: using orderPizz method
+// makes 2 arrays: 1 for the main ingredient and another with the other ingredients
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms'); */
