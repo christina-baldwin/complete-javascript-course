@@ -5,6 +5,22 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+const weekdays = ['mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -12,22 +28,10 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 enhanced object literals
+  openingHours,
 
-  order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -270,7 +274,72 @@ rest2.owner &&= 'Anonymous';
 console.log(rest1);
 console.log(rest2); */
 
-/*////////////////////
+/* /////////////////
+//  LOOPING ARRAYS: THE FOR-OF LOOP
+// will loop over the entire iteration and identify seperate values
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) console.log(`${i + 1}: ${el}`); */
+
+/////////////////////////////
+// ENHANCED OBJECT LITERALS
+// objects: see opening hours at the top of the code
+// functions: see order at the top of the code
+// computing properties: see const weekdays at the top
+
+/*/////////////////////////
+// OPTIONAL CHAINING
+// the below is an error so first would need to check if mon exists and then check what time it opens
+// console.log(restaurant.openingHours.mon.open);
+//  could fix this with an if function but looks messy and only checks for one property
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+// using optional chaning instead
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+// example
+const days = ['mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; //variable name needs brackets notation
+  console.log(`On ${day} we open at ${open}`);
+}
+// methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+// arrays
+// const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+const users = [];
+console.log(users[0]?.name ?? 'User array empty'); */
+
+/*//////////////////////////////
+// LOOPING OBJECTS
+// property name
+const properties = Object.keys(openingHours);
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of Object.keys(openingHours)) {
+  openStr += `${day},`;
+}
+console.log(openStr);
+// property values
+const values = Object.values(openingHours);
+console.log(values);
+// whole object
+const entries = Object.entries(openingHours);
+// [key, value] but caa use any name this is just the order of it
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`); 
+} */
+
+///////////////////////////////
+// **** CODING CHALLENGES ****
+///////////////////////////////
+
+////////////////////
 // CODING CHALLENGE #1: FOOTBALL BETTING APP
 const game = {
   team1: 'Bayern Munich',
@@ -312,6 +381,7 @@ const game = {
     team2: 6.5,
   },
 };
+/*
 // 1.
 // const players1 = [...game.players[0]];
 // const players2 = [...game.players[1]];
@@ -345,3 +415,49 @@ console.log(
     (game.odds.team2 < game.odds.team1 &&
       `Team 2 is more likely to win than team 1`)
 ); */
+
+/////////////////////////
+// CODING CHALLENGE #2: FOOTBALL BETTING APP CONT.
+// 1.
+for (const [goal, playerName] of game.scored.entries()) {
+  console.log(`Goal ${goal + 1}: ${playerName}`);
+}
+// 2.
+let sum = 0;
+for (const odd of Object.values(game.odds)) {
+  console.log(odd);
+  sum = sum + odd;
+}
+console.log(sum);
+const averageOdd = sum / Object.values(game.odds).length;
+console.log(averageOdd);
+// 3.
+console.log(
+  `- Odd of victory ${game.team1}: ${game.odds.team1}\n- Odd of draw: ${game.odds.x}\n- Odd of victory ${game.team2}: ${game.odds.team2} `
+);
+// 4. (bonus)
+let scorers = {};
+
+// const lewandowski = game.scored[0];
+// scorers[lewandowski] = 1;
+
+// const gnarby = game.scored[1];
+// scorers[gnarby] = 1;
+
+// const hummels = game.scored[2];
+// scorers[hummels] = 1;
+
+// const lewandowski = game.scored[3];
+// scorers[lewandowski] = 2;
+
+for (const [_, playerName] of game.scored.entries()) {
+  console.log(playerName);
+  console.log(scorers);
+  if (scorers[playerName]) {
+    scorers[playerName]++;
+  } else {
+    scorers[playerName] = 1;
+  }
+  console.log(scorers);
+}
+console.log(scorers);
