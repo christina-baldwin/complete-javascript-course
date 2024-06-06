@@ -335,7 +335,7 @@ for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`); 
 } */
 
-////////////////////////////
+/*////////////////////////////
 // SETS
 
 const orderSet = new Set([
@@ -362,7 +362,36 @@ console.log(staffUnique);
 // if you only want to know the number of unique elements:
 console.log(new Set(['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter']).size);
 // counting how many letters in a string:
-console.log(new Set('jonasschmedtman').size);
+console.log(new Set('jonasschmedtman').size); */
+
+/*////////////////
+// MAPS
+const rest = new Map();
+rest.set('name', 'Classic Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('closed', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get(true));
+
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('closed')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+
+// need to be in a constant to be able to be saved in the same place in the memory so as to be able to see it when called later
+const arr = [1, 2];
+rest.set(arr, 'Test');
+console.log(rest.get(arr));
+
+console.log(rest.size);
+console.log(rest); */
 
 ///////////////////////////////
 // **** CODING CHALLENGES ****
