@@ -113,3 +113,40 @@ let pageSum = 0;
 for (let book of books) {
   pageSum += book.pages; // pageSum + book.pages = pageSum
 }; */
+
+/*////////////////////
+// LOOPING OBJECTS
+// 11.1
+const entries = [];
+
+for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+  entries.push([key]);
+}
+// 11.2
+for (const [i, value] of Object.values(
+  books[0].thirdParty.goodreads
+).entries()) {
+  entries[i].push(value);
+}
+// 11.3
+const entries2 = Object.entries(books[0].thirdParty.goodreads); */
+
+/*//////////////
+// SETS
+// 12.1
+const allKeywords = [];
+
+for (const book of books) {
+  allKeywords.push(...book.keywords);
+}
+// 12.2
+const uniqueKeywords = new Set(allKeywords);
+// 12.3
+uniqueKeywords.add('coding');
+uniqueKeywords.add('science');
+// 12.4
+uniqueKeywords.delete('business');
+// 12.5
+uniqueKeywordsArr = [...uniqueKeywords];
+// 12.6
+uniqueKeywords.clear(); */

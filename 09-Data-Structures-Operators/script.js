@@ -335,6 +335,35 @@ for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`); 
 } */
 
+////////////////////////////
+// SETS
+
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+orderSet.add('Garlic bread');
+orderSet.delete('Pizza');
+// orderSet.clear();
+console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// example: remove duplicate values from arrays
+const staff = ['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+// if you only want to know the number of unique elements:
+console.log(new Set(['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter']).size);
+// counting how many letters in a string:
+console.log(new Set('jonasschmedtman').size);
+
 ///////////////////////////////
 // **** CODING CHALLENGES ****
 ///////////////////////////////
@@ -416,7 +445,7 @@ console.log(
       `Team 2 is more likely to win than team 1`)
 ); */
 
-/////////////////////////
+/*/////////////////////////
 // CODING CHALLENGE #2: FOOTBALL BETTING APP CONT.
 // 1.
 for (const [goal, playerName] of game.scored.entries()) {
@@ -425,16 +454,18 @@ for (const [goal, playerName] of game.scored.entries()) {
 // 2.
 let sum = 0;
 for (const odd of Object.values(game.odds)) {
-  console.log(odd);
   sum = sum + odd;
 }
-console.log(sum);
 const averageOdd = sum / Object.values(game.odds).length;
 console.log(averageOdd);
 // 3.
-console.log(
-  `- Odd of victory ${game.team1}: ${game.odds.team1}\n- Odd of draw: ${game.odds.x}\n- Odd of victory ${game.team2}: ${game.odds.team2} `
-);
+// console.log(
+//   `- Odd of victory ${game.team1}: ${game.odds.team1}\n- Odd of draw: ${game.odds.x}\n- Odd of victory ${game.team2}: ${game.odds.team2} `
+// );
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
 // 4. (bonus)
 let scorers = {};
 
@@ -451,13 +482,16 @@ let scorers = {};
 // scorers[lewandowski] = 2;
 
 for (const [_, playerName] of game.scored.entries()) {
-  console.log(playerName);
-  console.log(scorers);
   if (scorers[playerName]) {
     scorers[playerName]++;
   } else {
     scorers[playerName] = 1;
   }
-  console.log(scorers);
 }
 console.log(scorers);
+
+// Jonas' solution:
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// } */
