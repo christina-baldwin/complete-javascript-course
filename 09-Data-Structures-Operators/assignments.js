@@ -165,3 +165,12 @@ console.log(`${bookMap.get('title')} by ${bookMap.get('author')}`);
 console.log(bookMap.size);
 // 13.5
 if (bookMap.has('author')) console.log('The author of the book is known'); */
+
+/*////////////
+// MAPS ITERATION
+// 14.1
+const firstBookMap = new Map(Object.entries(books[0]));
+// 14.2
+for (const [key, value] of firstBookMap) {
+  if (typeof value === 'number') console.log(key);
+} */

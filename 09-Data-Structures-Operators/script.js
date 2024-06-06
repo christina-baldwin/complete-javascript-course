@@ -393,6 +393,47 @@ console.log(rest.get(arr));
 console.log(rest.size);
 console.log(rest); */
 
+/*//////////////////
+// MAP ITERATION
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct! :D'],
+  [false, 'Try again! :('],
+]);
+console.log(question);
+// convert object to map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// using iterable maps in for- loops: quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+
+// from inside out => will give true or false => then will look for true or false in the map then returns that to the console
+console.log(question.get(question.get('correct') === answer));
+// my way with an if statement (gives the same result):
+// if (answer === question.get('correct')) {
+//   console.log(question.get(true));
+// } else {
+//   console.log(question.get(false));
+// }
+
+// object to a map
+const firstBookMap = new Map(Object.entries(books[0]));
+
+// map to an array
+console.log([...question]);
+console.log([...question.keys()]); */
+
 ///////////////////////////////
 // **** CODING CHALLENGES ****
 ///////////////////////////////
