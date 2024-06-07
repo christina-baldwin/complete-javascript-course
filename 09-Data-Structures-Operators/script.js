@@ -434,6 +434,88 @@ const firstBookMap = new Map(Object.entries(books[0]));
 console.log([...question]);
 console.log([...question.keys()]); */
 
+////////////////////////
+// WORKING WITH STRINGS
+// PART 1
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+// position
+console.log(plane[0]);
+console.log('B737'[0]);
+// length
+console.log(airline.length);
+// index of
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+// slice
+console.log(airline.slice(4));
+// extracting the first and last word without knowing indexes
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+// extracting from the end
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+// example: whether a seat is a middle seat or not
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') {
+    console.log('You got the middle seat :/');
+  } else {
+    console.log('You got lucky ;)');
+  }
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+// what JS does: when calling a method on a string, it is converted to an object
+console.log(new String('jonas'));
+// PART 2
+// changing cases
+const passenger = 'jOnAs';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+// comparing
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@Jonas.Io \n';
+
+// const lowerEmail = email.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+
+const normalEmail = loginEmail.toLowerCase().trim();
+console.log(email === normalEmail);
+// replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23';
+console.log(announcement.replaceAll('door', 'gate'));
+// regular expression
+console.log(announcement.replaceAll(/door/g, 'gate'));
+// booleans: includes, startsWith, endsWith
+const planeModel = 'Airbus A320neo';
+console.log(planeModel.includes('A320'));
+console.log(planeModel.startsWith('Airb'));
+
+if (planeModel.startsWith('Airbus') && planeModel.endsWith('neo')) {
+  console.log('Part of the new Airbus family');
+}
+// exercise: check baggage
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed onboard');
+  } else {
+    console.log('Welcome onboard');
+  }
+};
+checkBaggage('I have a laptop, some food, and a pocket knife');
+checkBaggage('Socks and a camera');
+checkBaggage('GOT SOME SNACKS AND A GUN FOR PROTECTION');
+
 ///////////////////////////////
 // **** CODING CHALLENGES ****
 ///////////////////////////////
