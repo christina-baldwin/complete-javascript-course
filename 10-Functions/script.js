@@ -188,7 +188,18 @@ const addTax2 = function (rate) {
 const addVAT2 = addTax2(0.23);
 console.log(addVAT2(100));*/
 
-/////////////////////////
+////////////////////////////////////////////
+// IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+(function () {
+  console.log('This will never run again');
+});
+
+/*/////////////////////////
 // CHALLENGE #1
 // 1.
 const poll = {
@@ -246,4 +257,4 @@ document
 // Test data for bonus:
 // Data 1: [5, 2, 3]
 // Data 2: [1, 5, 3, 9, 6, 1]
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string'); */
