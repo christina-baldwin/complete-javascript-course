@@ -194,10 +194,20 @@ const runOnce = function () {
   console.log('This will never run again');
 };
 runOnce();
-
+// iife
 (function () {
   console.log('This will never run again');
-});
+  const isprivate = 23;
+})();
+
+(() => console.log('This will also never run again'))();
+
+{
+  const isprivate = 23;
+  var notPrivate = 46;
+}
+console.log(isprivate);
+console.log(notPrivate);
 
 /*/////////////////////////
 // CHALLENGE #1
