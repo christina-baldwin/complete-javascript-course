@@ -188,7 +188,7 @@ const addTax2 = function (rate) {
 const addVAT2 = addTax2(0.23);
 console.log(addVAT2(100));*/
 
-////////////////////////////////////////////
+/*////////////////////////////////////////////
 // IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
 const runOnce = function () {
   console.log('This will never run again');
@@ -207,7 +207,63 @@ runOnce();
   var notPrivate = 46;
 }
 console.log(isprivate);
-console.log(notPrivate);
+console.log(notPrivate);*/
+
+///////////////////////
+// CLOSURES
+// situation 1
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+console.dir(booker);
+
+// situation 2
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+
+// re-assigning f function
+h();
+f();
+
+// situation 3
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(180, 3);
 
 /*/////////////////////////
 // CHALLENGE #1
@@ -268,3 +324,15 @@ document
 // Data 1: [5, 2, 3]
 // Data 2: [1, 5, 3, 9, 6, 1]
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string'); */
+
+///////////////
+// CHALLENGE #2
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
