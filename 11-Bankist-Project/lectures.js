@@ -108,3 +108,24 @@ const checkDogs = function (juliaData, kateData) {
 };
 
 checkDogs(juliaData, kateData); */
+
+// map method
+const transactions = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+const transactionsUsd = transactions.map(function (tra) {
+  return tra * eurToUsd;
+});
+
+console.log(transactions);
+console.log(transactionsUsd);
+
+const transactionsDesc = transactions.map(function (tra, i) {
+  if (tra > 0) {
+    return `Transaction ${i + 1}: You deposited ${tra}`;
+  } else {
+    return `Transaction ${i + 1}: You withdrew ${Math.abs(tra)}`;
+  }
+});
+
+console.log(transactionsDesc);
