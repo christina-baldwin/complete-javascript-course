@@ -115,9 +115,45 @@ const withdrawals = transactions.filter(function (tra) {
   return tra < 0;
 });
 
-console.log(withdrawals); */
+console.log(withdrawals); 
 
-/* ///////////////////////
+// reduce method
+
+console.log(transactions);
+
+// accumulator = snowball effect
+const balance = transactions.reduce(function (acc, cur, i, arr) {
+  console.log(`Transaction ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+
+console.log(balance);
+// max value
+const maxValue = transactions.reduce(function (acc, cur) {
+  if (acc > cur) {
+    return acc;
+  } else {
+    return cur;
+  }
+}, transactions[0]);
+console.log(maxValue); 
+
+// chaining methods
+
+const eurToUsd = 1.1;
+const totalDepositsUsd = transactions
+  .filter(tra => tra > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, tra) => acc + tra, 0);
+console.log(totalDepositsUsd); 
+
+// find method
+const transactions = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const firstWithdrawal = transactions.find(tra => tra < 0);
+console.log(transactions);
+console.log(firstWithdrawal); */
+
+/*////////////////////////
 // CHALLENGE #1
 
 const juliaData = [3, 5, 2, 12, 7];
@@ -140,4 +176,40 @@ const checkDogs = function (juliaData, kateData) {
   });
 };
 
-checkDogs(juliaData, kateData); */
+checkDogs(juliaData, kateData);
+
+// CHALLENGE #2
+const calcAverageHumanAge = function (dogAges) {
+  const humanAges = dogAges.map(function (dogAge) {
+    if (dogAge <= 2) {
+      return 2 * dogAge;
+    } else {
+      return 16 + dogAge * 4;
+    }
+  });
+  console.log(humanAges);
+  const humanAges18 = humanAges.filter(function (humanAge) {
+    return humanAge >= 18;
+  });
+  console.log(humanAges18);
+  const humanAgesAvg =
+    humanAges18.reduce(function (acc, humanAge18, i, arr) {
+      return acc + humanAge18;
+    }, 0) / humanAges18.length;
+  return humanAgesAvg;
+};
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
+
+// CHALLENGE #3
+const calcAverageHumanAge1 = dogAges =>
+  dogAges
+    .map(dogAge => (dogAge <= 2 ? dogAge * 2 : 16 + dogAge * 4))
+    .filter(humanAge => humanAge >= 18)
+    .reduce((acc, humanAge18, i, arr) => acc + humanAge18 / arr.length, 0);
+
+const avg3 = calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]);
+const avg4 = calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg3, avg4); */

@@ -84,6 +84,41 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+/////////////////////////////
+// display balance
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce(function (acc, mov) {
+    return acc + mov;
+  }, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
+//////////////////////
+// in, out, and interest summary calculations
+const calcDisplaySummary = function (movements) {
+  const incoming = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incoming}€`;
+
+  const outgoing = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(outgoing)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * 0.012)
+    .filter((int, i, arr) => {
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
 ///////////////////////////////
 // username
 
@@ -100,3 +135,7 @@ const createUsername = function (accs) {
 };
 createUsername(accounts);
 console.log(accounts);
+
+// finding and returning a single account
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
