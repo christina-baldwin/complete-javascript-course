@@ -151,9 +151,31 @@ console.log(totalDepositsUsd);
 const transactions = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const firstWithdrawal = transactions.find(tra => tra < 0);
 console.log(transactions);
-console.log(firstWithdrawal); */
+console.log(firstWithdrawal); 
 
-/*////////////////////////
+// creating and filling arrays
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7);
+x.fill(1, 3, 5);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+const rolls = Array.from({ length: 100 }, () =>
+  Math.trunc(Math.random() * 6 + 1)
+);
+console.log(rolls);*/
+
+////////////////////////
 // CHALLENGE #1
 
 const juliaData = [3, 5, 2, 12, 7];
@@ -212,4 +234,6 @@ const calcAverageHumanAge1 = dogAges =>
 
 const avg3 = calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]);
 const avg4 = calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]);
-console.log(avg3, avg4); */
+console.log(avg3, avg4);
+
+// CHALLENGE #4
