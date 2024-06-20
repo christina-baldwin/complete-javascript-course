@@ -1,8 +1,11 @@
 'use strict';
 
 /*/////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // LECTURES
+
+
+/////////////////////////////////////////////////
+// ARRAYS
 /////////////////////////////////////////////////
 
 // to connect in index:
@@ -175,7 +178,7 @@ const rolls = Array.from({ length: 100 }, () =>
 );
 console.log(rolls);*/
 
-////////////////////////
+/* ////////////////////////
 // CHALLENGE #1
 
 const juliaData = [3, 5, 2, 12, 7];
@@ -296,4 +299,88 @@ console.log(dogsOkFood);
 const dogsCopy = dogs
   .slice()
   .sort((a, b) => a.recommendedFood - b.recommendedFood);
-console.log(dogsCopy);
+console.log(dogsCopy); */
+
+/*/////////////////////////////////////////////////
+// NUMBERS DATES TIMES
+/////////////////////////////////////////////////
+
+// binary base 2
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3);
+
+// conversion
+console.log(Number('23'));
+console.log(+'23');
+
+// parsing
+console.log(Number.parseInt('30px', 10));
+console.log(Number.parseInt('e23', 10));
+
+console.log(Number.parseInt('2.5rem'));
+console.log(Number.parseFloat('2.5rem'));
+
+// check if value is not a number (NaN)
+console.log(Number.isNaN(20));
+console.log(Number.isNaN('20'));
+console.log(Number.isNaN(+'20X'));
+console.log(Number.isNaN(23 / 0));
+
+// check if value is a number (finite)
+console.log(Number.isFinite(20));
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(+'20X'));
+console.log(Number.isFinite(23 / 0));
+
+// remainder
+console.log(5 % 2);
+console.log(5 / 2); // 5 = 2 x 2 + 1
+
+console.log(8 & 3);
+console.log(8 / 3); // 8 = 2 x 3 + 2
+
+console.log(6 % 2); // = 0
+console.log(6 / 2);
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(2));
+console.log(isEven(9));
+
+// numeric separators
+// 287,460,000,000
+const diameter = 287_460_000_000;
+
+const priceCents = 345_99;
+
+const transferFee = 15_00;
+
+const PI = 3.1415;
+
+console.log(Number('230_000'));
+
+// date/time
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Aug 02 2020 18:05:41'));
+console.log(new Date('December 24, 2015')); // not recommended
+
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+console.log(new Date(0)); // ms after unix time
+console.log(3 * 24 * 60 * 60 * 1000); // converting 3 days to ms
+
+// working with dates
+const future = new Date(2037, 10, 19, 15, 23, 5);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.getTime());
+console.log(future.toISOString());
+console.log(Date.now);
+
+future.setFullYear(2040); */
