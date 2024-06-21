@@ -29,3 +29,88 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+///////////////////////////////////////
+// Cookies message
+
+// notes:
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.bocy);
+// const allSections = document.querySelectorAll('.section');
+// document.getElementById('section--1');
+// const allButtons = document.getElementsByTagName('button');
+// document.getElementsByClassName('btn');
+
+// setting up message
+const header = document.querySelector('.header');
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent =
+//   'We use cookies for improved functionality and analytics.';
+message.innerHTML =
+  'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// header.prepend(message);
+header.append(message);
+// header.append(message.cloneNodetrue(true));
+
+// header.before(message);
+// header.after(message);
+
+// removing message
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
+
+// styling the message
+message.style.backgroundColor = '#37383d';
+message.style.width = '110%';
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// atrributes
+const logo = document.querySelector('.nav__logo');
+logo.alt = 'Beautiful, minimalist logo.';
+logo.setAttribute('company', 'Bankist');
+
+// console.log(logo.src);
+// console.log(logo.getAttribute("src"));
+
+// classes
+
+///////////////////////////////////////
+// Smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  // // getting the coordinates
+  // const s1coords = section1.getBoundingClientRect();
+
+  // //scrolling
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+////////////////////////////////
+// mouseenter event listeners
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading!');
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
