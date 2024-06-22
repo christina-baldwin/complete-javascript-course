@@ -31,6 +31,39 @@ document.addEventListener('keydown', function (e) {
 });
 
 ///////////////////////////////////////
+// Page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. add event listener to parent element
+// 2. determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
+
+  //matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// Button scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+///////////////////////////////////////
 // Cookies message
 
 // notes:
@@ -84,8 +117,11 @@ logo.setAttribute('company', 'Bankist');
 
 // classes
 
+/*/////////////////////////////////
+// NOT RELATED TO WEBSITE
+
 ///////////////////////////////////////
-// Smooth scrolling
+// smooth scrolling
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
@@ -102,9 +138,6 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' });
 });
-
-/*/////////////////////////////////
-// NOT RELATED TO WEBSITE
 
 ////////////////////////////////
 // mouseenter event listeners
