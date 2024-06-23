@@ -80,7 +80,28 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
-//tabs.forEach(t => t.addEventListener('click', () => console.log('TAB')));
+///////////////////////////////////////
+// Nav link hover fade animation
+const nav = document.querySelector('.nav');
+
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+// passing an argument into handler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+
+// allowing the fade to change back
+nav.addEventListener('mouseout', handleHover.bind(1));
 
 ///////////////////////////////////////
 // Cookies message
