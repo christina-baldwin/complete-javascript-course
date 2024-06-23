@@ -33,14 +33,6 @@ document.addEventListener('keydown', function (e) {
 ///////////////////////////////////////
 // Page navigation
 
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
 // 1. add event listener to parent element
 // 2. determine what element originated the event
 
@@ -62,6 +54,33 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+///////////////////////////////////////
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // guard clause
+  if (!clicked) return;
+
+  // lower all the tabs first
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  // button moves up when clicked
+  clicked.classList.add('operations__tab--active');
+
+  // hide non-relevant content areas
+  tabsContent.forEach(tc => tc.classList.remove('operations__content--active'));
+  // display relevant content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+//tabs.forEach(t => t.addEventListener('click', () => console.log('TAB')));
 
 ///////////////////////////////////////
 // Cookies message
@@ -115,10 +134,8 @@ logo.setAttribute('company', 'Bankist');
 // console.log(logo.src);
 // console.log(logo.getAttribute("src"));
 
-// classes
-
 /*/////////////////////////////////
-// NOT RELATED TO WEBSITE
+// CLASSES
 
 ///////////////////////////////////////
 // smooth scrolling
@@ -173,4 +190,34 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target);
+}); 
+
+///////////////////////////////////////
+// dom traversing
+const h1 = document.querySelector('h1');
+
+// downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'orangered';
+
+// upwards: parent
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary';
+h1.closest('h1').style.background = 'var(--gradient-secondary';
+
+// sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
 }); */
