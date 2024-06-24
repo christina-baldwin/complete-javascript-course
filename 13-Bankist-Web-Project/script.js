@@ -104,19 +104,136 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 ///////////////////////////////////////
-// Cookies message
-
-// notes:
-// console.log(document.documentElement);
-// console.log(document.head);
-// console.log(document.bocy);
-// const allSections = document.querySelectorAll('.section');
-// document.getElementById('section--1');
-// const allButtons = document.getElementsByTagName('button');
-// document.getElementsByClassName('btn');
-
-// setting up message
+// Sticky navigation: intersection observer
 const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  // height applied outside target element so the nav pops up a bit before the section
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
+
+///////////////////////////////////////
+// Revealing sections on scroll
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  // trigger only when target is intersecting
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  // stop it from observing after scrolling through to optimise performance
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  // section.classList.add('section--hidden');
+});
+
+///////////////////////////////////////
+// Lazy loading images
+
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // replace src image with data-src image
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
+
+///////////////////////////////////////
+// Slider component
+// JUST TO BE ABLE TO SEE IT BETTER
+const slider = document.querySelector('.slider');
+slider.style.transform = 'scale(0.4) translateX(-1200px)';
+slider.style.overflow = 'visible';
+////////////////////////////////////
+
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+let curSlide = 0;
+const maxSlide = slides.length;
+const minSlide = 0;
+
+// place components side-by-side and start from the first slide: transform (0%, 100%, 200%, 300%)
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+  );
+};
+goToSlide(0);
+
+// functions to move the slides
+const nextSlide = function () {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+  goToSlide(curSlide);
+};
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1;
+  } else {
+    curSlide--;
+  }
+  goToSlide(curSlide);
+};
+
+// moving slide with arrow buttons
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
+
+// moving with the arrow keys
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowLeft') prevSlide();
+  e.key === 'ArrowRight' && nextSlide();
+});
+
+///////////////////////////////////////
+// Cookies message
+// setting up message
 
 const message = document.createElement('div');
 message.classList.add('cookie-message');
@@ -156,7 +273,10 @@ logo.setAttribute('company', 'Bankist');
 // console.log(logo.getAttribute("src"));
 
 /*/////////////////////////////////
-// CLASSES
+//////////////////////////////////
+//////////////////////////////////
+//////////////////////////////////
+// LECTURE NOTES
 
 ///////////////////////////////////////
 // smooth scrolling
@@ -241,4 +361,48 @@ console.log(h1.nextSibling);
 console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if (el !== h1) el.style.transform = 'scale(0.5)';
-}); */
+}); 
+
+///////////////////////////////////////
+// Sticky navigation: scroll event
+const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
+
+///////////////////////////////////////
+// Cookies message
+
+// notes:
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.bocy);
+// const allSections = document.querySelectorAll('.section');
+// document.getElementById('section--1');
+// const allButtons = document.getElementsByTagName('button');
+// document.getElementsByClassName('btn');
+
+///////////////////////////////////////
+// Sticky navigation: intersection observer
+// called each time the observer element intersects the root element
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+
+// const obsOptions = {
+//   root: null,
+//   // the amount of the section that we want to be visible in the viewport
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+*/
