@@ -328,7 +328,7 @@ const get3Countries = async function (c1, c2, c3) {
   }
 };
 
-get3Countries('portugal', 'canada', 'tanzania'); */
+get3Countries('portugal', 'canada', 'tanzania'); 
 
 ///////////////////////////////////////
 // other promise combinators
@@ -372,7 +372,7 @@ Promise.any([
   Promise.resolve('Success'),
   Promise.reject('Error'),
   Promise.resolve('Another uccess'),
-]).then(response => console.log(response));
+]).then(response => console.log(response)); */
 
 ///////////////////////////////////////
 // try...catch
@@ -384,6 +384,7 @@ Promise.any([
 // } catch (err) {
 //   alert(err.message);
 // }
+
 /*///////////////////////////////////////
 // our first AJAX call - old way
 
@@ -480,7 +481,7 @@ const whereAmI = function (lat, lng) {
 
 whereAmI(52.508, 13.381);
 whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474); 
+whereAmI(-33.933, 18.474); */
 
 // CHALLENGE #2
 
@@ -507,33 +508,77 @@ const wait = function (seconds) {
 };
 
 let currentImg;
-createImage('img/img-1.jpg')
-  .then(function (img) {
-    currentImg = img;
-    console.log('image 1 loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImg.style.display = 'none';
-    return createImage('img/img-2.jpg');
-  })
-  .then(img => {
-    currentImg = img;
-    console.log('image 2 loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImg.style.display = 'none';
-    return createImage('img/img-3.jpg');
-  })
-  .then(img => {
-    currentImg = img;
-    console.log('image 3 loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImg.style.display = 'none';
-  })
-  .catch(function (err) {
-    console.error(err);
-  }); */
+// createImage('img/img-1.jpg')
+//   .then(function (img) {
+//     currentImg = img;
+//     console.log('image 1 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImg.style.display = 'none';
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImg = img;
+//     console.log('image 2 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImg.style.display = 'none';
+//     return createImage('img/img-3.jpg');
+//   })
+//   .then(img => {
+//     currentImg = img;
+//     console.log('image 3 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImg.style.display = 'none';
+//   })
+//   .catch(function (err) {
+//     console.error(err);
+//   });
+
+// CHALLENGE #3
+// const loadNPause = async function () {
+//   try {
+//     // image 1
+//     let img = await createImage('img/img-1.jpg');
+//     console.log('Image 1 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+//     // image 2
+//     img = await createImage('img/img-2.jpg');
+//     console.log('Image 2 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+//   } catch (error) {
+//     console.error(error);
+//     renderError(`something went wrong: ${error.message}`);
+//   }
+//   throw error;
+// };
+
+// loadNPause();
+
+const loadAll = async function (imgArr) {
+  try {
+    const images = imgArr.map(async function (img) {
+      // await can only be used in an async function
+      // needs a return to work
+      return await createImage(img);
+    });
+    console.log(images);
+
+    const imgEl = await Promise.all(images);
+    console.log(imgEl);
+
+    imgEl.forEach(function (img) {
+      return img.classList.add('parallel');
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
