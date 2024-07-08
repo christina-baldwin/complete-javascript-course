@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="queries.css" />
     <title>Pig Game</title>
   </head>
   <body>
@@ -31,6 +32,54 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
+    <button class="show-modal">📖 Instructions</button>
+
+    <div id="modal" class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1 class="modal-heading">Pig Game Instructions</h1>
+      <p class="modal-text">
+        Here you will find the list of instructions on how you can play the Pig
+        Game. First you will need to find a friend to play with, then you can go
+        through these instructions together.
+      </p>
+      <ul class="modal-list">
+        <li class="modal-list-item">
+          <span class="modal-number">1.</span> Choose who starts first. Whover
+          goes first is Player 1, whoever goes second is Player 2
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">2.</span> Player 1 clicks the "roll dice"
+          button and the number they have rolled shows up in the "current" box.
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">3.</span> Player 1 chooses whether to
+          "hold" this number, in which case it gets saved in their score and the
+          turn moves to Player 2 or they can keep rolling and the number gets
+          added to their "current" score.
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">4.</span> If Player 1 rolls a 1 however,
+          any number in their current score is reset to zero and the turn moves
+          to Player 2.
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">5.</span> When the turn moves on to Player
+          2, either through clicking "hold" or through rolling a 1, the same
+          rules apply.
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">6.</span> The game continues until one of
+          the players reaches a held score of 100. The player to reach this
+          score first, wins! The game can also be reset using "new game".
+        </li>
+        <li class="modal-list-item">
+          <span class="modal-number">Good luck!</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
