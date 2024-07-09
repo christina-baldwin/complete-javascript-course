@@ -180,10 +180,10 @@ const updateUI = function (acc) {
 // implementing login
 let currentAccount;
 
-// ALWAYS LOGGED-IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// // ALWAYS LOGGED-IN
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // logging in
 btnLogin.addEventListener('click', function (e) {
