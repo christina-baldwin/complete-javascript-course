@@ -172,10 +172,16 @@ img {
 
 .btn--app:link,
 .btn--app:visited {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
   padding: 0.8rem 2.5rem;
   border-radius: 3rem;
   background-color: #f3f3f3;
-  box-shadow: inset 0 0 0 4px var(--color-primary);
+  box-shadow: inset 0 0 0 3px var(--color-primary);
   color: #222;
 }
 .btn--app:hover,
